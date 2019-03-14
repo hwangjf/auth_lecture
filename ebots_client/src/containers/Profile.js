@@ -1,10 +1,11 @@
 import React from 'react'
-import { Loader, Grid, Segment, Image } from 'semantic-ui-react'
+import { Loader, Grid, Segment, Image, Form, Button } from 'semantic-ui-react'
 import UserBots from "../components/UserBots"
 
 class Profile extends React.Component {
 	state = {
-		user: null
+		user: null,
+		balance: 0,
 	}
 	componentDidMount(){
 		const userId = this.props.match.params.id
@@ -36,6 +37,42 @@ class Profile extends React.Component {
 		})
 	}
 
+	handleChange = (event) => {
+		this.setState({
+			[event.target.name]: event.target.value
+		})
+	}
+
+	handleSubmit = () => {
+		fetch(`http://localhost:3001/api/v1/users/${this.state.user.id}/add_balance`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Accepts": "application/json",
+			},
+			body: JSON.stringify({balance: this.state.balance})
+		})
+		.then(res => res.json())
+		.then(response => {
+			this.setState({
+				user: response,
+				balance: 0,
+			})
+		})
+	}
+
+	getNewBot = () => {
+		fetch(`http://localhost:3001/api/v1/users/${this.state.user.id}/get_bot`, {
+			method: "POST",
+		})
+		.then(res => res.json())
+		.then(response => {
+			this.setState({
+				user: response,
+			})
+		})
+	}
+
 	render(){
 		const { user } = this.state
 
@@ -50,9 +87,20 @@ class Profile extends React.Component {
 							<p>Balance: ${user.balance}</p>
 							<p>{user.bio}</p>
 						</Segment>
+						<Segment>
+							<Form onSubmit={this.handleSubmit}>
+								<Form.Field>
+						      <label>Add to your balance!</label>
+						      <input type="number" onChange={this.handleChange} name="balance" value={this.state.balance} placeholder='Additional Balance' />
+						    </Form.Field>
+						    <Button type='submit'>Add</Button>
+							</Form>
+						</Segment>
+
 					</Grid.Column>
 					<Grid.Column width={9}>
 						<Segment>
+							<Button onClick={this.getNewBot}>Roll the dice!</Button>
 							<UserBots bots={user.bots} toggleSale={this.toggleSale}/>
 						</Segment>
 					</Grid.Column>

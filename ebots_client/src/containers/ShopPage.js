@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import SaleList from '../components/SaleList'
-import { Grid, Modal, Image, Button } from 'semantic-ui-react'
 
 
 class ShopPage extends React.Component {
@@ -31,7 +30,7 @@ class ShopPage extends React.Component {
 		})
 	}
 	render(){
-		const { bots, selectedBot, open } = this.state
+		const { bots } = this.state
 		return (
 				<Fragment>
 					<SaleList bots={bots} selectBot={this.selectBot}/>

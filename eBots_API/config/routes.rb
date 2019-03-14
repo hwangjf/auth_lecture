@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 			resources :bots
 			patch "/bots/:id/toggle_sale", to: "bots#toggle_sale"
 			post "/bots/:id/purchase", to: "bots#purchase"
+			post "/users/:id/add_balance", to: "users#add_balance"
+			post "/users/:id/get_bot", to: "users#get_bot"
 		end
 	end
 end
