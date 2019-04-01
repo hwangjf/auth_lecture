@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
 	def show
 		user = User.find(params[:id])
 
-		render json: user
+		render json: UserSerializer.new(user)
 	end
 
 	def create
@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
 		)
 
 		if user.save
-			render json: user
+			render json: UserSerializer.new(user)
 		else
 			render json: {errors: user.errors.full_messages}
 		end
@@ -27,22 +27,20 @@ class Api::V1::UsersController < ApplicationController
 
 		user.update(balance: user.balance+params[:balance].to_f)
 
-		render json: user
+		render json: UserSerializer.new(user)
 	end
 
 	def get_bot
-
 		Bot.create({
-				name: Resetter.generate_name,
-				image_url: Faker::Avatar.image,
-				price: (50..100).to_a.sample.to_f,
-				for_sale: true,
-				owner_id: params[:id]
+			name: Resetter.generate_name,
+			image_url: Faker::Avatar.image,
+			price: (50..100).to_a.sample.to_f,
+			for_sale: true,
+			owner_id: params[:id]
 		})
 
 		user = User.find(params[:id])
 
-
-		render json: user
+		render json: UserSerializer.new(user)
 	end
 end
