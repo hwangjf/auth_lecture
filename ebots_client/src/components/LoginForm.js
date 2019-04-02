@@ -14,10 +14,13 @@ class LoginForm extends React.Component {
 	}
 
 	handleSubmit = () => {
-		console.log("LOGGING IN", this.state)
+    // con
+    // console.log("LOGGING IN", this.state)
+    this.props.history.push(`/users/${1}`)
 	}
 
 	render(){
+    console.log(this.props)
 		return (
 			<Form onSubmit={this.handleSubmit}>
 		    <Form.Field>

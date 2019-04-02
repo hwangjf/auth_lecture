@@ -7,15 +7,16 @@ class ShopPage extends React.Component {
 	}
 
 	componentDidMount(){
-		fetch("http://localhost:3001/api/v1/bots")
+		fetch("http://localhost:4000/api/v1/bots")
 			.then(res => res.json())
 			.then(response => {
+        debugger
 				this.setState({bots: response})
 			})
 	}
 
 	selectBot = (botID) => {
-		fetch(`http://localhost:3001/api/v1/bots/${botID}/purchase`, {
+		fetch(`http://localhost:4000/api/v1/bots/${botID}/purchase`, {
 			method: "POST"
 		})
 			.then(res => res.json())

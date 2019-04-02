@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
 	}
 
 	createUser = () => {
-		fetch("http://localhost:3001/api/v1/users", {
+		fetch("http://localhost:4000/api/v1/users", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -26,6 +26,7 @@ class SignupForm extends React.Component {
 		})
 			.then(res => res.json())
 			.then((response) => {
+        debugger
 				if (response.errors){
 					alert(response.errors)
 				} else {

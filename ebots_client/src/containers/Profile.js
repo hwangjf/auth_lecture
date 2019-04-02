@@ -10,15 +10,16 @@ class Profile extends React.Component {
 	
 	componentDidMount(){
 		const userId = this.props.match.params.id
-		fetch(`http://localhost:3001/api/v1/users/${userId}`)
+		fetch(`http://localhost:4000/api/v1/users/${userId}`)
 			.then(res => res.json())
 			.then(response => {
+        debugger
 				this.setState({user: response})
 			})
 	}
 
 	toggleSale = (botID) => {
-		fetch(`http://localhost:3001/api/v1/bots/${botID}/toggle_sale`,{
+		fetch(`http://localhost:4000/api/v1/bots/${botID}/toggle_sale`,{
 			method: "PATCH"
 		})
 			.then(res => res.json())
@@ -45,7 +46,7 @@ class Profile extends React.Component {
 	}
 
 	handleSubmit = () => {
-		fetch(`http://localhost:3001/api/v1/users/${this.state.user.id}/add_balance`, {
+		fetch(`http://localhost:4000/api/v1/users/${this.state.user.id}/add_balance`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -63,7 +64,7 @@ class Profile extends React.Component {
 	}
 
 	getNewBot = () => {
-		fetch(`http://localhost:3001/api/v1/users/${this.state.user.id}/get_bot`, {
+		fetch(`http://localhost:4000/api/v1/users/${this.state.user.id}/get_bot`, {
 			method: "POST",
 		})
       .then(res => res.json())
