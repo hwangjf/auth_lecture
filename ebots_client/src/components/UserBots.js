@@ -12,9 +12,10 @@ const UserBots = ({ bots, toggleSale }) => {
 						{bot.name}
 					</Table.Cell>
 					<Table.Cell onClick={() => toggleSale(bot.id)}>
-						{bot.for_sale 
-							? <Icon name="checkmark" color="green"/> 
-							: <Icon name="close" color="red"/>}
+            {bot.for_sale 
+              ? <Icon name="checkmark" color="green"/> 
+              : <Icon name="close" color="red"/>
+            }
 					</Table.Cell>
 				</Table.Row>
 			)
