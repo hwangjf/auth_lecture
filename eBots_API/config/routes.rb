@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 			patch "/bots/:id/toggle_sale", to: "bots#toggle_sale"
 			post "/bots/:id/purchase", to: "bots#purchase"
 			post "/users/:id/add_balance", to: "users#add_balance"
-			post "/users/:id/get_bot", to: "users#get_bot"
+      post "/users/:id/get_bot", to: "users#get_bot"
+      
+      # login route
+      post "/login" => "auth#create"
+
+      # sign up route
+      get "/auto_login" => "auth#auto_login"
+
 		end
 	end
 end
