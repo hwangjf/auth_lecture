@@ -53,25 +53,25 @@ class Profile extends React.Component {
 			},
 			body: JSON.stringify({balance: this.state.balance})
 		})
-		.then(res => res.json())
-		.then(response => {
-			this.setState({
-				user: response,
-				balance: 0,
-			})
-		})
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          user: response,
+          balance: 0,
+        })
+      })
 	}
 
 	getNewBot = () => {
 		fetch(`http://localhost:3001/api/v1/users/${this.state.user.id}/get_bot`, {
 			method: "POST",
 		})
-		.then(res => res.json())
-		.then(response => {
-			this.setState({
-				user: response,
-			})
-		})
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          user: response,
+        })
+      })
 	}
 
 	render(){
