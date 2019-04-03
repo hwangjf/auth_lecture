@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post "/users/:id/get_bot", to: "users#get_bot"
       
       # login route
-      post "/login" => "auth#create"
+      post "/login" => "auth#login"
 
       # sign up route
       get "/auto_login" => "auth#auto_login"

@@ -10,8 +10,7 @@ class ShopPage extends React.Component {
 		fetch("http://localhost:4000/api/v1/bots")
 			.then(res => res.json())
 			.then(response => {
-        debugger
-				this.setState({bots: response})
+				this.setState({bots: response.data})
 			})
 	}
 

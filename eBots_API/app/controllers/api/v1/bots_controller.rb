@@ -8,7 +8,7 @@ class Api::V1::BotsController < ApplicationController
 	end
 
 	def index
-		bots = Bot.where(for_sale: true)
+    bots = Bot.where(for_sale: true)
 
 		render json: BotSerializer.new(bots)
 	end

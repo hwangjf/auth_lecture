@@ -13,8 +13,7 @@ class Profile extends React.Component {
 		fetch(`http://localhost:4000/api/v1/users/${userId}`)
 			.then(res => res.json())
 			.then(response => {
-        debugger
-				this.setState({user: response})
+				this.setState({user: response.data})
 			})
 	}
 
@@ -77,17 +76,16 @@ class Profile extends React.Component {
 
 	render(){
 		const { user } = this.state
-
 		if(user){
 			return (
 				<Grid columns={2} centered>
 					<Grid.Column width={3}>
 						<Segment>
-							<Image src={user.avatar_url} fluid />
-							<strong>{user.username}</strong><br/>
-							<strong>{user.name}</strong>
-							<p>Balance: ${user.balance}</p>
-							<p>{user.bio}</p>
+							<Image src={user.attributes.avatar_url} fluid />
+							<strong>{user.attributes.username}</strong><br/>
+							<strong>{user.attributes.name}</strong>
+							<p>Balance: ${user.attributes.balance}</p>
+							<p>{user.attributes.bio}</p>
 						</Segment>
 						<Segment>
 							<Form onSubmit={this.handleSubmit}>
@@ -103,7 +101,7 @@ class Profile extends React.Component {
 					<Grid.Column width={9}>
 						<Segment>
 							<Button onClick={this.getNewBot}>Roll the dice!</Button>
-							<UserBots bots={user.bots} toggleSale={this.toggleSale}/>
+							<UserBots bots={user.attributes.bots} toggleSale={this.toggleSale}/>
 						</Segment>
 					</Grid.Column>
 				</Grid>

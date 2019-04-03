@@ -25,8 +25,7 @@ class SignupForm extends React.Component {
 			body: JSON.stringify(this.state)
 		})
 			.then(res => res.json())
-			.then((response) => {
-        debugger
+			.then(response => {
 				if (response.errors){
 					alert(response.errors)
 				} else {
