@@ -14,7 +14,8 @@ const UserBots = ({ bots, toggleSale }) => {
 					<Table.Cell onClick={() => toggleSale(bot.id)}>
 						{bot.for_sale 
 							? <Icon name="checkmark" color="green"/> 
-							: <Icon name="close" color="red"/>}
+							: <Icon name="close" color="red"/>
+						}
 					</Table.Cell>
 				</Table.Row>
 			)

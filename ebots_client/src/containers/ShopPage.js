@@ -7,16 +7,23 @@ class ShopPage extends React.Component {
 	}
 
 	componentDidMount(){
-		fetch("http://localhost:3001/api/v1/bots")
-			.then(res => res.json())
-			.then(response => {
-				this.setState({bots: response})
-			})
+		fetch("http://localhost:3001/api/v1/bots", {
+			headers: {
+				"Authorization": localStorage.getItem('jwt')
+			}
+		})
+		.then(res => res.json())
+		.then(response => {
+			this.setState({bots: response})
+		})
 	}
 
 	selectBot = (botID) => {
 		fetch(`http://localhost:3001/api/v1/bots/${botID}/purchase`, {
-			method: "POST"
+			method: "POST",
+			headers: {
+				"Authorization": localStorage.getItem('jwt')
+			}
 		})
 			.then(res => res.json())
 			.then(response => {

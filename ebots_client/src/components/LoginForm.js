@@ -12,9 +12,28 @@ class LoginForm extends React.Component {
 			[event.target.name]: event.target.value
 		})
 	}
-
+	
 	handleSubmit = () => {
-		console.log("LOGGING IN", this.state)
+		fetch("http://localhost:3001/api/v1/login", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Accepts": "application/json",
+			},
+			body: JSON.stringify(this.state)
+		})
+		.then(res => res.json())
+		.then((response) => {
+			if (response.errors) {
+				alert(response.errors)
+			} else {
+					// we need to login at the top level where we are holding our current user!
+					// setState in App to currentuser
+					this.props.setCurrentUser(response.user)
+					localStorage.setItem('jwt', response.jwt)
+					this.props.history.push(`/users/${response.user.id}`)
+				}
+			})
 	}
 
 	render(){
