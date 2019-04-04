@@ -1,19 +1,20 @@
 import React from 'react'
 import { Loader, Grid, Segment, Image, Form, Button } from 'semantic-ui-react'
-import UserBots from "../components/UserBots"
+import UserBots from '../components/UserBots'
 
 class Profile extends React.Component {
 	state = {
 		user: null,
 		balance: 0,
 	}
+	
 	componentDidMount(){
 		const userId = this.props.match.params.id
 		fetch(`http://localhost:3001/api/v1/users/${userId}`)
-		.then(res => res.json())
-		.then(response => {
-			this.setState({user: response})
-		})
+			.then(res => res.json())
+			.then(response => {
+				this.setState({user: response})
+			})
 	}
 
 	toggleSale = (botID) => {
@@ -23,21 +24,21 @@ class Profile extends React.Component {
 				"Authorization": localStorage.getItem('jwt')
 			}
 		})
-		.then(res => res.json())
-		.then(response => {
-			this.setState((prevState) => {
-				let target = prevState.user.bots.find(bot => bot.id === response.id)
-				let copy = [...prevState.user.bots]
+			.then(res => res.json())
+			.then(response => {
+				this.setState((prevState) => {
+					let target = prevState.user.bots.find(bot => bot.id === response.id)
+					let copy = [...prevState.user.bots]
 
-				let index = copy.indexOf(target)
+					let index = copy.indexOf(target)
 
-				copy[index] = response
+					copy[index] = response
 
-				return {
-					user: {...prevState.user, bots: copy}
-				}
+					return {
+						user: {...prevState.user, bots: copy}
+					}
+				})
 			})
-		})
 	}
 
 	handleChange = (event) => {

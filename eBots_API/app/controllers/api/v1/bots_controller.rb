@@ -6,14 +6,14 @@ class Api::V1::BotsController < ApplicationController
 
 		bot.update(for_sale: !bot.for_sale)
 
-		render json: bot
+		render json: BotSerializer.new(bot)
 	end
 
 	def index
 		byebug
 		bots = Bot.where(for_sale: true)
 
-		render json: bots
+		render json: BotSerializer.new(bots)
 	end
 
 	def purchase
@@ -21,7 +21,7 @@ class Api::V1::BotsController < ApplicationController
 
 		bot.update(for_sale: false)
 		
-		render json: bot
+		render json: BotSerializer.new(bot)
 	end
 	
 end

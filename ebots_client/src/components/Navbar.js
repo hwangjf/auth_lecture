@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-
 class Navbar extends React.Component {
 
 	logout = () => {

@@ -21,7 +21,7 @@ const UserBots = ({ bots, toggleSale }) => {
 			)
 		})
 	}
-	
+
 	return(
 		<Table celled>
 			<Table.Header>

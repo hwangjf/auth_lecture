@@ -41,11 +41,22 @@ class LoginForm extends React.Component {
 			<Form onSubmit={this.handleSubmit}>
 		    <Form.Field>
 		      <label>Username</label>
-		      <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
+					<input 
+						onChange={this.handleChange} 
+						name="username" 
+						value={this.state.username} 
+						placeholder='Username' 
+					/>
 		    </Form.Field>
 		    <Form.Field>
 		      <label>Password</label>
-		      <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
+					<input 
+						onChange={this.handleChange} 
+						type="password" 
+						name="password" 
+						value={this.state.password} 
+						placeholder='Password' 
+					/>
 		    </Form.Field>
 		    <Button type='submit'>Submit</Button>
 		  </Form>
