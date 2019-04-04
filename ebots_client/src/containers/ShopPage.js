@@ -8,7 +8,11 @@ class ShopPage extends React.Component {
 	}
 
 	componentDidMount(){
-		fetch("http://localhost:3001/api/v1/bots")
+		fetch("http://localhost:3001/api/v1/bots", {
+			headers: {
+				"Authorization": localStorage.getItem('jwt')
+			}
+		})
 		.then(res => res.json())
 		.then(response => {
 			this.setState({bots: response})
@@ -17,7 +21,10 @@ class ShopPage extends React.Component {
 
 	selectBot = (botID) => {
 		fetch(`http://localhost:3001/api/v1/bots/${botID}/purchase`, {
-			method: "POST"
+			method: "POST",
+			headers: {
+				"Authorization": localStorage.getItem('jwt')
+			}
 		})
 		.then(res => res.json())
 		.then(response => {

@@ -18,7 +18,10 @@ class Profile extends React.Component {
 
 	toggleSale = (botID) => {
 		fetch(`http://localhost:3001/api/v1/bots/${botID}/toggle_sale`,{
-			method: "PATCH"
+			method: "PATCH",
+			headers: {
+				"Authorization": localStorage.getItem('jwt')
+			}
 		})
 		.then(res => res.json())
 		.then(response => {
@@ -75,7 +78,7 @@ class Profile extends React.Component {
 
 	render(){
 		const { user } = this.state
-
+		console.log(this.props)
 		if(user){
 			return (
 				<Grid columns={2} centered>

@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+What is Auth??
 
-## Available Scripts
+Authentication
+  - user is who they say they are
 
-In the project directory, you can run:
+Authorization
+  - allows a user to do what they are allowed to do
+  - give them access to be able to do what they should be able to do
 
-### `npm start`
+Rails way
+Session - login use the password and begin a session 
+  - has_secure_password - password_digest
+  - login
+  - how do we confirm where the data is coming from?
+    - there is a cookie being sent with every request to confirm that there is that secret key that is related to our application to confirm that the information is coming from a trusted source
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Rails and React
+- validations - we can validate in many ways
+  - params - check that the information is valid information and then use it accordingly
+  - make sure they sent the correct information and it makes sense
+- cors - protect the domains that are able to have access to our application
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+React - how do we protect our react app
 
-### `npm test`
+how to go about it
+- protect backend routes with some of validation and confirm the client side is allowed access
+- client side confirm the information we get back from the data base
+  - we can provide access if authorized
+  - if not we can reroute to login and send back an error message
+  - a lot of the client side auth will involve a conditional based on information from out backend
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Pt. 2
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### JWT (JSON Web Token) 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- What is JWT (JSON Web Token) 
+  1. how to use it and why
+  2. when to send it?? 
+    - do we always send a token???
+    - login/sign up
+  3. where to store it
+    - did we get one? 
+    - did we expect one?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend: 
+  - we saw the flow we are going make some helper functions to abstract away some of this logic
+    - where does this logic belong?
+  - what routes do we need to protect and what does that mean?
+    - we can choose to protect particular routes
+  - when do we send a token
+    - login/signup
+  - when do we receive a token 
+    - only for authorized routes or every request depends on the application
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Frontend:
+  - how do we get a token?
+    - login and sign up
+  - where do we store it
+    - local storage
+    - how long though?
+  - when should we send it to the backend
+    - any request that requires it or every request?
+    

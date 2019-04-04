@@ -26,10 +26,11 @@ class SignupForm extends React.Component {
 		})
 		.then(res => res.json())
 		.then((response) => {
+
 			if (response.errors){
 				alert(response.errors)
 			} else {
-				this.props.history.push(`/users/${response.id}`)
+				this.props.history.push(`/users/${response.user.id}`)
 			}
 		})
 	}
