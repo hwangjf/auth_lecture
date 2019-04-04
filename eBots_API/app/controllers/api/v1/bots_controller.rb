@@ -1,4 +1,6 @@
 class Api::V1::BotsController < ApplicationController
+	before_action :authorized
+
 	def toggle_sale
 		bot = Bot.find(params[:id])
 
@@ -8,6 +10,7 @@ class Api::V1::BotsController < ApplicationController
 	end
 
 	def index
+		byebug
 		bots = Bot.where(for_sale: true)
 
 		render json: BotSerializer.new(bots)
@@ -20,4 +23,5 @@ class Api::V1::BotsController < ApplicationController
 		
 		render json: BotSerializer.new(bot)
 	end
+	
 end

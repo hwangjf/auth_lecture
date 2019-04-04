@@ -16,7 +16,10 @@ class Api::V1::UsersController < ApplicationController
 		)
 
 		if user.save
-			render json: UserSerializer.new(user)
+			# JWT.encode(payload, 'secret')
+			jwt = encode_token({user_id: user.id})
+
+			render json: {user: UserSerializer.new(user), jwt: jwt}
 		else
 			render json: {errors: user.errors.full_messages}
 		end
@@ -41,6 +44,7 @@ class Api::V1::UsersController < ApplicationController
 
 		user = User.find(params[:id])
 
-		render json: UserSerializer.new(user)
+
+		render json: user
 	end
 end
