@@ -12,28 +12,28 @@
 
 ActiveRecord::Schema.define(version: 2019_03_13_152550) do
 
-	# These are extensions that must be enabled in order to support this database
-	enable_extension "plpgsql"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-	create_table "bots", force: :cascade do |t|
-		t.string "name"
-		t.string "image_url"
-		t.float "price"
-		t.integer "owner_id"
-		t.boolean "for_sale"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-	end
+  create_table "bots", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.float "price"
+    t.integer "owner_id"
+    t.boolean "for_sale"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-	create_table "users", force: :cascade do |t|
-		t.string "name"
-		t.string "username"
-		t.string "password_digest"
-		t.float "balance"
-		t.text "bio"
-		t.string "avatar_url"
-		t.datetime "created_at", null: false
-		t.datetime "updated_at", null: false
-	end
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.float "balance"
+    t.text "bio"
+    t.string "avatar_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

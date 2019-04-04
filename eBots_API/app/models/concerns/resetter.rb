@@ -46,6 +46,7 @@ class Resetter
 
 	def self.destroy
 		Bot.destroy_all
+		User.destroy_all
 	end
 
 	def self.reset

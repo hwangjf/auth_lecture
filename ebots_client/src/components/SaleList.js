@@ -20,6 +20,7 @@ const SaleList = ({ bots, selectBot }) => {
 			)
 		})
 	}
+	
 	return(
 		<Card.Group centered>
 	      {renderBots()}

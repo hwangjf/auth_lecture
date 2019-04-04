@@ -24,14 +24,14 @@ class SignupForm extends React.Component {
 			},
 			body: JSON.stringify(this.state)
 		})
-		.then(res => res.json())
-		.then((response) => {
-			if (response.errors){
-				alert(response.errors)
-			} else {
-				this.props.history.push(`/users/${response.id}`)
-			}
-		})
+			.then(res => res.json())
+			.then((response) => {
+				if (response.errors){
+					alert(response.errors)
+				} else {
+					this.props.history.push(`/users/${response.id}`)
+				}
+			})
 	}
 
 	handleSubmit = () => {
@@ -47,19 +47,40 @@ class SignupForm extends React.Component {
 			<Form onSubmit={this.handleSubmit}>
 		    <Form.Field>
 		      <label>Username</label>
-		      <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
+					<input 
+						onChange={this.handleChange} 
+						name="username" 
+						value={this.state.username} 
+						placeholder='Username' 
+					/>
 		    </Form.Field>
 		    <Form.Field>
 		      <label>Name</label>
-		      <input onChange={this.handleChange} name="name" value={this.state.name} placeholder='Name' />
+					<input 
+						onChange={this.handleChange} 
+						name="name" 
+						value={this.state.name} 
+						placeholder='Name' 
+					/>
 		    </Form.Field>
 		    <Form.Field>
 		      <label>Password</label>
-		      <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
+					<input 
+						onChange={this.handleChange} 
+						type="password" 
+						name="password" 
+						value={this.state.password} 
+						placeholder='Password' 
+					/>
 		    </Form.Field>
 		    <Form.Field>
 		      <label>Password Confirmation</label>
-		      <input onChange={this.handleChange} type="password" name="passwordConfirmation" value={this.state.passwordConfirmation} placeholder='Password Confirmation' />
+					<input 
+						onChange={this.handleChange} 
+						type="password" 
+						name="passwordConfirmation" value={this.state.passwordConfirmation} 
+						placeholder='Password Confirmation' 
+					/>
 		    </Form.Field>
 		    <Button type='submit'>Submit</Button>
 		  </Form>
